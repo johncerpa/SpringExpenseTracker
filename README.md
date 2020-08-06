@@ -1,0 +1,17 @@
+How to run?
+
+--- Setup container and copy sql file ---
+
+(I used 5431 because port 5432 is used in my system)
+sudo docker run --name postgresdb -e POSTGRES_PASSWORD=admin -d -p 5431:5432 postgres 
+
+sudo docker container cp expensetracker_db.sql postgresdb:/
+
+sudo docker container exec -it postgresdb bash
+
+--- In container bash ---
+
+psql -U postgres --file expensetracker_db.sql
+
+--- To check DB ---
+sudo docker container exec -it postgresdb psql -U postgres
