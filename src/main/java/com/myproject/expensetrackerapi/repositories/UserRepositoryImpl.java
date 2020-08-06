@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
@@ -76,7 +75,7 @@ public class UserRepositoryImpl implements UserRepository {
         return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{ userId }, userRowMapper);
     }
 
-    public RowMapper<User> userRowMapper = ((rs, rowNum) -> {
+    public RowMapper<User> userRowMapper = (rs, rowNum) -> {
         return new User(
                 rs.getInt("user_id"),
                 rs.getString("first_name"),
@@ -84,5 +83,5 @@ public class UserRepositoryImpl implements UserRepository {
                 rs.getString("email"),
                 rs.getString("password")
         );
-    });
+    };
 }

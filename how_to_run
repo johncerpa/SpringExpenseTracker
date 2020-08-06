@@ -15,12 +15,3 @@ psql -U postgres --file expensetracker_db.sql
 
 --- To check DB ---
 sudo docker container exec -it postgresdb psql -U postgres
-
-
-
-
-
-
-
-
-

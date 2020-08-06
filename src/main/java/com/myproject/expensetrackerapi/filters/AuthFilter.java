@@ -21,13 +21,9 @@ public class AuthFilter extends GenericFilterBean {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-
-        System.out.println("CALLING DOFILTER");
-
         String authHeader = httpRequest.getHeader("Authorization");
 
         if (authHeader == null) {
-            System.out.println("authHeader is null");
             httpResponse.sendError(HttpStatus.FORBIDDEN.value(), "Authorization token must be provided");
             return;
         }
